@@ -1,18 +1,35 @@
+url_way = ''  # Inicializar la variable url_way con una cadena vacía
+
+
 while True:
     print('----- MENÚ -----')
     print('1: Seleccionar número de pos de waystation')
     print('2: Ingresar IP de pos a analizar')
     print('0: Salir')
     opcion = input('Ingrese una opción: ')
+
+
+
     if opcion == '1':
         pos_number = input('Ingrese número de pos: ')
         url_way = r"D:\newpos61\POSFILES\LOGS\tlog\POS00" + pos_number
         print('El número de pos es el siguiente: ' + url_way)
-    elif opcion == '2':
+
+    try:
+        with open(url_way, 'r') as archivo:
+            contenido = archivo.read()
+            if '997110761301310013' in contenido:
+                print('Se encontró cierre de TPA.')
+            else:
+                print('No se encontró encontró cierre de TPA.')
+    except FileNotFoundError:
+        print('El archivo no pudo ser encontrado. Verifica la ruta y el número de pos ingresados.')
+
+        elif opcion == '2':        
         ip_pos = input('Ingrese IP completa de pos: ')
         url_pos = "\\" + ip_pos + r"\e$\newpos61\posfile\logs"
         print('La IP elegida es: ' + ip_pos)
-    elif opcion == '0':
+        elif opcion == '0':
         print('Saliendo...')
         break
     else:
