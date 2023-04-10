@@ -1,6 +1,5 @@
 url_way = ''  # Inicializar la variable url_way con una cadena vacía
 
-
 while True:
     print('----- MENÚ -----')
     print('1: Seleccionar número de pos de waystation')
@@ -8,16 +7,20 @@ while True:
     print('0: Salir')
     opcion = input('Ingrese una opción: ')
 
+    
     if opcion == '1':
         pos_number = input('Ingrese número de pos: ')
-        fecha_tpa = input('Ingrese una fecha en formato YYYYMMDD')
+        fecha_tpa = input('Ingrese una fecha en formato YYYYMMDD: ')
         url_way = r"D:\newpos61\POSFILES\LOGS\tlog\POS00" + pos_number
-        tpa_way = url_way + "nptrx_POS00" + pos_number + fecha_tpa
+        tpa_way = url_way +"\\"+"nptrx_POS00" + pos_number + "_" + fecha_tpa + ".tpa"
+        confirmacion = "no"
         print('Este es el .tpa para analizar: ' + tpa_way)
-
+        while confirmacion.lower() != "si":  # Convertir entrada a minúsculas y comparar con la palabra clave           
+            confirmacion = input("Para confirmar, ingrese la palabra clave 'si': ")
+              
         try:
-            with open(tpa_way, 'r') as archivo:
-                contenido = archivo.read()
+                with open(tpa_way, 'r') as archivo:
+                    contenido = archivo.read()
                 if '997110761301310013' in contenido:
                     cierre_tpa = "Ok"
                     print('Se encontró cierre de TPA.')
@@ -25,7 +28,9 @@ while True:
                     cierre_tpa = "Fail"
                     print('No se encontró encontró cierre de TPA.')
         except FileNotFoundError:
-            print('El archivo no pudo ser encontrado. Verifica la ruta y el número de pos ingresados.')
+                print('El archivo no pudo ser encontrado. Verifica la ruta y el número de pos ingresados.')
+
+        input('Presione una tecla para continuar!')
 
     elif opcion == '2':
         ip_pos = input('Ingrese IP completa de pos: ')
