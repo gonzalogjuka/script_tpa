@@ -33,14 +33,14 @@ while True:
                     print('Se encontró cierre de TPA.')
                 else:
                     cierre_tpa = "Fail"
-                print('No se encontró encontró cierre de TPA.')
+                    print('No se encontró encontró cierre de TPA.')
             except FileNotFoundError:
                 print('El archivo no pudo ser encontrado. Verifica la ruta y el número de pos ingresados.')
         else:
             print('Se alcanzó el máximo de intentos permitidos. El programa se cerrará.')
-            quit()
+    
+        input("Presione una tecla para continuar...")  # Mensaje de "Presione una tecla para continuar"
 
-        print("Presione una tecla para continuar!")
 
     elif opcion == '2':
         ip_pos = input('Ingrese IP completa de pos: ')
