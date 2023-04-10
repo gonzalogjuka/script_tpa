@@ -21,8 +21,8 @@ while True:
                 fecha_tpa = input('Ingrese una fecha en formato YYYYMMDD: ')
                 url_way = r"D:\newpos61\POSFILES\LOGS\tlog\POS00" + pos_number
                 tpa_way = url_way + "\\" + "nptrx_POS00" + pos_number + "_" + fecha_tpa + ".tpa"
-            confirmacion = input('Este es el .tpa para analizar: ' + tpa_way + '. ¿Desea continuar? (si/no): ')
-            intentos += 1
+                confirmacion = input('Este es el .tpa para analizar: ' + tpa_way + '. ¿Desea continuar? (si/no): ')
+                intentos += 1
 
         if confirmacion.lower() == "si":
             try:
