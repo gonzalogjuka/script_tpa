@@ -29,10 +29,8 @@ while True:
                 with open(tpa_way, 'r') as archivo:
                     contenido = archivo.read()
                 if '997110761301310013' in contenido:
-                    cierre_tpa = "Ok"
                     print('Se encontró cierre de TPA.')
                 else:
-                    cierre_tpa = "Fail"
                     print('No se encontró encontró cierre de TPA.')
             except FileNotFoundError:
                 print('El archivo no pudo ser encontrado. Verifica la ruta y el número de pos ingresados.')
