@@ -39,7 +39,7 @@ while True:
         else:
             print('Se alcanzó el máximo de intentos permitidos. El programa se cerrará.')
     
-        input("Presione una tecla para continuar...")  # Mensaje de "Presione una tecla para continuar"
+        input("Presione una tecla para continuar...")
 
 
     elif opcion == '2':
