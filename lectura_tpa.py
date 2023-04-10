@@ -10,12 +10,13 @@ while True:
 
     if opcion == '1':
         pos_number = input('Ingrese número de pos: ')
+        fecha_tpa = input('Ingrese una fecha en formato YYYYMMDD')
         url_way = r"D:\newpos61\POSFILES\LOGS\tlog\POS00" + pos_number
-        tpa_way = url_way + ""
-        print('El número de pos es el siguiente: ' + url_way)
+        tpa_way = url_way + "nptrx_POS00" + pos_number + fecha_tpa
+        print('Este es el .tpa para analizar: ' + tpa_way)
 
         try:
-            with open(url_way, 'r') as archivo:
+            with open(tpa_way, 'r') as archivo:
                 contenido = archivo.read()
                 if '997110761301310013' in contenido:
                     cierre_tpa = "Ok"
