@@ -12,13 +12,20 @@ while True:
         pos_number = input('Ingrese número de pos: ')
         fecha_tpa = input('Ingrese una fecha en formato YYYYMMDD: ')
         url_way = r"D:\newpos61\POSFILES\LOGS\tlog\POS00" + pos_number
-        tpa_way = url_way +"\\"+"nptrx_POS00" + pos_number + "_" + fecha_tpa + ".tpa"
-        confirmacion = "no"
-        print('Este es el .tpa para analizar: ' + tpa_way)
-        while confirmacion.lower() != "si":  # Convertir entrada a minúsculas y comparar con la palabra clave           
-            confirmacion = input("Para confirmar, ingrese la palabra clave 'si': ")
-              
-        try:
+        tpa_way = url_way + "\\" + "nptrx_POS00" + pos_number + "_" + fecha_tpa + ".tpa"
+        confirmacion = input('Este es el .tpa para analizar: ' + tpa_way + '. ¿Desea continuar? (si/no): ')
+        intentos = 1
+        while confirmacion.lower() != "si" and intentos < 3:  # Se permiten hasta 3 intentos
+            if confirmacion.lower() == "no":
+                pos_number = input('Ingrese número de pos: ')
+                fecha_tpa = input('Ingrese una fecha en formato YYYYMMDD: ')
+                url_way = r"D:\newpos61\POSFILES\LOGS\tlog\POS00" + pos_number
+                tpa_way = url_way + "\\" + "nptrx_POS00" + pos_number + "_" + fecha_tpa + ".tpa"
+            confirmacion = input('Este es el .tpa para analizar: ' + tpa_way + '. ¿Desea continuar? (si/no): ')
+            intentos += 1
+
+        if confirmacion.lower() == "si":
+            try:
                 with open(tpa_way, 'r') as archivo:
                     contenido = archivo.read()
                 if '997110761301310013' in contenido:
@@ -26,11 +33,14 @@ while True:
                     print('Se encontró cierre de TPA.')
                 else:
                     cierre_tpa = "Fail"
-                    print('No se encontró encontró cierre de TPA.')
-        except FileNotFoundError:
+                print('No se encontró encontró cierre de TPA.')
+            except FileNotFoundError:
                 print('El archivo no pudo ser encontrado. Verifica la ruta y el número de pos ingresados.')
+        else:
+            print('Se alcanzó el máximo de intentos permitidos. El programa se cerrará.')
+            quit()
 
-        input('Presione una tecla para continuar!')
+        print("Presione una tecla para continuar!")
 
     elif opcion == '2':
         ip_pos = input('Ingrese IP completa de pos: ')
