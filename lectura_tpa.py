@@ -46,7 +46,7 @@ while True:
         print('La IP elegida es: ' + ip_pos)
 
     elif opcion == '0':
-        print('Saliendo...')
+        print('Saliendo')
         break
 
     else:
