@@ -23,12 +23,15 @@ while True:
                         contenido = archivo.read()
                     if '997110761301310013' in contenido:
                         print('Se encontró cierre de TPA.')
+                        input('Presione una tecla para volver al menu')
                         break
                     else:
                         print('No se encontró cierre de TPA.')
+                        input('Presione una tecla para volver al menu')
                         break  # Sale del bucle si la confirmación es "si"
                 except FileNotFoundError:
                     print('El archivo no pudo ser encontrado. Verifica la ruta y el número de pos ingresados.')
+                    input('Presione una tecla para volver al menu')
                     break
 
             elif confirmacion.lower() == "no":               
@@ -40,8 +43,10 @@ while True:
                 intentos += 1
                 if intentos >= 3:
                     print('Se alcanzó el máximo de intentos permitidos. El programa se cerrará.')
+                    input('Presione una tecla para volver al menu')
             elif confirmacion.lower() !="no":
                 print('Por favor, volver a ingresar los datos nuevamente')
+                input('Presione una tecla para volver al menu')
                 break
 
 
