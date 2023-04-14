@@ -28,7 +28,7 @@ while True:
                     else:
                         print('No se encontró cierre de TPA.')
                         input('Presione una tecla para volver al menu')
-                        break 
+                        break
                 except FileNotFoundError:
                     print('El archivo no pudo ser encontrado. Verifica la ruta y el número de pos ingresados.')
                     input('Presione una tecla para volver al menu')
