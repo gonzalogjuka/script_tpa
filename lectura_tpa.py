@@ -23,11 +23,13 @@ while True:
                         contenido = archivo.read()
                     if '997110761301310013' in contenido:
                         print('Se encontró cierre de TPA.')
+                        break
                     else:
                         print('No se encontró cierre de TPA.')
-                    break  # Sale del bucle si la confirmación es "si"
+                        break  # Sale del bucle si la confirmación es "si"
                 except FileNotFoundError:
                     print('El archivo no pudo ser encontrado. Verifica la ruta y el número de pos ingresados.')
+                    break
 
             elif confirmacion.lower() == "no":               
                 pos_number = input('Ingrese número de pos: ')
