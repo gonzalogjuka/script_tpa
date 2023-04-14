@@ -1,3 +1,4 @@
+import os
 url_way = ''  # Inicializar la variable url_way con una cadena vacía
 
 while True:
@@ -46,7 +47,13 @@ while True:
         print('La IP elegida es: ' + ip_pos)
         print('La URL generada es: ' + url_pos.replace('\\', '\\'))
         input("Presione una tecla para continuar...")
-
+        try:
+            os.chdir(url_pos)
+            print('Acceso exitoso a la carpeta: ' + url_pos)
+        except OSError as e:
+            print('Error al acceder a la carpeta: ' + str(e))
+    
+        input("Presione una tecla para continuar...")
 
     elif opcion == '0':
         print('Saliendo')
