@@ -42,8 +42,11 @@ while True:
 
     elif opcion == '2':
         ip_pos = input('Ingrese IP completa de pos: ')
-        url_pos = "\\" + ip_pos + r"\e$\newpos61\posfile\logs"
+        url_pos = "\\"+"\\" + ip_pos + "\\e$\\newpos61\\posfile\\logs"
         print('La IP elegida es: ' + ip_pos)
+        print('La URL generada es: ' + url_pos.replace('\\', '\\'))
+        input("Presione una tecla para continuar...")
+
 
     elif opcion == '0':
         print('Saliendo')
