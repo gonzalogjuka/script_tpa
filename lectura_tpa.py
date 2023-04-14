@@ -56,7 +56,7 @@ while True:
         input("Presione una tecla para continuar...")
 
     elif opcion == '0':
-        print('Saliendoooo')
+        print('Saliendoooo de vm hacia pc')
         break
 
     else:
