@@ -15,7 +15,7 @@ while True:
         url_way = r"D:\newpos61\POSFILES\LOGS\tlog\POS00" + pos_number
         tpa_way = url_way + "\\" + "nptrx_POS00" + pos_number + "_" + fecha_tpa + ".tpa"
         confirmacion = input('Este es el .tpa para analizar: ' + tpa_way + '. ¿Desea continuar? (si/no): ')
-        intentos = 0  # Inicializar el contador de intentos a 0
+        intentos = 0
         while intentos < 3:           
             if confirmacion.lower() == "si":
                 try:
@@ -26,7 +26,7 @@ while True:
                         break
                     else:
                         print('No se encontró cierre de TPA.')
-                        break  # Sale del bucle si la confirmación es "si"
+                        break
                 except FileNotFoundError:
                     print('El archivo no pudo ser encontrado. Verifica la ruta y el número de pos ingresados.')
                     break
