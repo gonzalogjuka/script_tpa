@@ -38,8 +38,9 @@ while True:
                 intentos += 1
                 if intentos >= 3:
                     print('Se alcanzó el máximo de intentos permitidos. El programa se cerrará.')
-            else:
-                print('Respuesta inválida. Por favor, ingrese "si" para continuar o "no" para ingresar un nuevo número de pos y fecha.')
+            elif confirmacion.lower() !="no":
+                print('Por favor, volver a ingresar los datos nuevamente')
+                break
 
 
 
@@ -58,7 +59,7 @@ while True:
         input("Presione una tecla para continuar...")
 
     elif opcion == '0':
-        print('Saliendoooo de vm hacia pc')
+        print('Saliendo')
         break
 
     else:
