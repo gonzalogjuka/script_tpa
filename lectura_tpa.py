@@ -49,21 +49,43 @@ while True:
                 input('Presione una tecla para volver al menu')
                 break
 
-
-
     elif opcion == '2':
         ip_pos = input('Ingrese IP completa de pos: ')
         url_pos = "\\"+"\\" + ip_pos + "\\e$\\newpos61\\posfile\\logs"
-        print('La IP elegida es: ' + ip_pos)
-        print('La URL generada es: ' + url_pos.replace('\\', '\\'))
-        input("Presione una tecla para continuar...")
-        try:
-            os.chdir(url_pos)
-            print('Acceso exitoso a la carpeta: ' + url_pos)
-        except OSError as e:
-            print('Error al acceder a la carpeta: ' + str(e))
-    
-        input("Presione una tecla para continuar...")
+        url_clean = url_pos.replace('\\', '\\')
+        confirmacion = input('Este es el .tpa para analizar: ' + url_clean + '. ¿Desea continuar? (si/no): ')
+        intentos = 0
+        while intentos < 3:           
+            if confirmacion.lower() == "si":
+                try:
+                    os.chdir(url_clean)
+                    print('Acceso exitoso a la carpeta: ' + url_clean)    
+                    if '997110761301310013' in contenido:
+                        print('Se encontró cierre de TPA.')
+                        input('Presione una tecla para volver al menu')
+                        break
+                    else:
+                        print('No se encontró cierre de TPA.')
+                        input('Presione una tecla para volver al menu')
+                        break
+                except OSError as e:
+                    print('Error al acceder a la carpeta: ' + str(e))
+                    input('Presione una tecla para volver al menu')
+                    break
+
+            elif confirmacion.lower() == "no":               
+                ip_pos = input('Ingrese IP completa de pos: ')
+                url_pos = "\\"+"\\" + ip_pos + "\\e$\\newpos61\\posfile\\logs"
+                url_clean = url_pos.replace('\\', '\\')
+                confirmacion = input('Este es el .tpa para analizar: ' + url_clean + '. ¿Desea continuar? (si/no): ')
+                intentos += 1
+                if intentos >= 3:
+                    print('Se alcanzó el máximo de intentos permitidos. El programa se cerrará.')
+                    input('Presione una tecla para volver al menu')
+            elif confirmacion.lower() !="no":
+                print('Por favor, volver a ingresar los datos nuevamente')
+                input('Presione una tecla para volver al menu')
+                break
 
     elif opcion == '0':
         print('Saliendo')
